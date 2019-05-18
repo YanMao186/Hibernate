@@ -52,8 +52,9 @@
         <!--managed:Hibernate委托程序来管理Session对象的生命周期-->
         <property name="hibernate.current_session_context_class">thread</property>
         <!--当使用xml建立与实体类的映射时使用此配置-->
-        <!--<mapping resource="./com/ym/hibernate/Customer.hbm.xml" />-->
-        <mapping class="com.ym.hibernate.Customer"/>
+        <mapping resource="./com/ym/hibernate/Customer.hbm.xml" />
+        <mapping resource="./com/ym/hibernate/LinkMan.hbm.xml" />
+        <!--<mapping class="com.ym.hibernate.Customer"/>-->
         <!--当在实体类上使用注解时使用此配置-->
     </session-factory>
 </hibernate-configuration>

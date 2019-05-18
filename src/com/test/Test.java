@@ -32,6 +32,8 @@ public class Test {
         customer.setCust_name("alibaba");
         customer.setCust_phone("11111111");
         session.save(customer);
+//        Customer customer1 = session.get(Customer.class, 1L);
+//        System.out.println(customer1);
         //6.提交事务
         transaction.commit();
         //7.释放资源

@@ -10,7 +10,7 @@
             name: 完整类名
             table:数据库表名
      -->
-    <class name="Customer" table="cst_customer" >
+    <class name="LinkMan" table="cst_linkman" >
         <!-- id元素:配置主键映射的属性
                 name: 填写主键对应属性名
                 column(可选): 填写表中的主键列名.默认值:列名会默认使用属性名
@@ -19,7 +19,7 @@
                 not-null(可选):配置该属性(列)是否不能为空. 默认值:false
                 length(可选):配置数据库中列的长度. 默认值:使用数据库类型的最大长度
          -->
-        <id name="cust_id"  >
+        <id name="lkm_id"  >
             <!-- generator:主键生成策略 -->
             <!--identity:主键自增,由数据库来维护主键值,录入时不需要指定主键-->
             <!--increment(线程不安全):主键自增,由hibernate来维护,每次插入前会先查询表中id最大值,+1作为新主键-->
@@ -37,25 +37,20 @@
                 not-null(可选):配置该属性(列)是否不能为空. 默认值:false
                 length(可选):配置数据库中列的长度. 默认值:使用数据库类型的最大长度
          -->
-        <property name="cust_name" column="cust_name" >
+        <property name="lkm_gender" column="lkm_gender" >
             <!--  <column name="cust_name" sql-type="varchar" ></column> -->
         </property>
-        <property name="cust_source" column="cust_source" ></property>
-        <property name="cust_industry" column="cust_industry" ></property>
-        <property name="cust_level" column="cust_level"></property>
-        <property name="cust_linkman" column="cust_linkman" ></property>
-        <property name="cust_phone" column="cust_phone" ></property>
-        <property name="cust_mobile" column="cust_mobile" ></property>
-        <!--set标签:
-                    name:多的一方的集合的属性名称-->
-        <!--inverse为true表示放弃外键的维护权-->
-        <set name="linkMans" cascade="save-update" inverse="true">
-            <!--key
-                column:多的一方的外键名称-->
-            <key column="lkm_cust_id"></key>
-            <!--one-to-many
-                    class多的一方的类全路径-->
-            <one-to-many class="com.ym.hibernate.LinkMan"/>
-        </set>
+        <property name="lkm_name" column="lkm_name" ></property>
+        <property name="lkm_phone" column="lkm_phone" ></property>
+        <property name="lkm_email" column="lkm_email"></property>
+        <property name="lkm_qq" column="lkm_qq" ></property>
+        <property name="lkm_mobile" column="lkm_mobile" ></property>
+        <property name="lkm_memo" column="lkm_memo" ></property>
+        <property name="lkm_position" column="lkm_position" ></property>
+        <!--many-to-one
+            name:一的一方对象的名称
+            class:一的一方的类的全路径
+            column:表的外键名称-->
+       <many-to-one name="customer" class="com.ym.hibernate.Customer" column="lkm_cust_id"/>
     </class>
 </hibernate-mapping>
